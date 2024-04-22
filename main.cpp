@@ -1,3 +1,7 @@
+// Repository Link: https://github.com/otheremma/zyLab-28.14.git
+//Group Members: Emma Stammeyer
+//
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -15,7 +19,6 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
 }
 
 int main() {
-   /* Type your code here */
    
    return 0;
 }

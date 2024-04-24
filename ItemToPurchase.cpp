@@ -35,10 +35,10 @@ int ItemToPurchase::GetQuantity() const {
 }
 
 void ItemToPurchase::PrintItemCost() {
-  //cout item cost
+  cout << ItemToPurchase.GetName() << " " << ItemToPurchase.GetQuantity() << " @ $" << ItemToPurchase.GetPrice() << " = $" << (ItemToPurchase.GetQuantity() * ItemToPurchase.GetPrice()) << endl;
 }      
 
 void ItemToPurchase::PrintItemDescription(){
-  //cout item description
+  cout << ItemToPurchase.GetName() << ": " << ItemToPurchase.GetDescription() << endl;
 }
 

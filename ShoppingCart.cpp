@@ -1,56 +1,89 @@
-#include <string>
-#include <vector>
-using namespace std;
-#incldue "ShoppingCart.h"
+#include <iostream>
+#include "ShoppingCart.h"
 
-ShoppingCart::ShoppingCart();
+ShoppingCart::ShoppingCart() : customerName(""), currentDate("") {}
 
-string ShoppingCart::GetCustormerName() const {
-  return customerName;
+ShoppingCart::ShoppingCart(string name, string date) : customerName(name), currentDate(date) {}
+
+string ShoppingCart::GetCustomerName() const {
+    return customerName;
 }
 
 string ShoppingCart::GetDate() const {
-  return currentDate;
+    return currentDate;
 }
 
-void ShoppingCart::AddItem(ItemToPurchase item){
-  cartItems.push_back(item);
+void ShoppingCart::AddItem(ItemToPurchase item) {
+    cartItems.push_back(item);
 }
 
-void ShoppingCart::RemoveItem(string name){
-  //remove item
+void ShoppingCart::RemoveItem(string name) {
+    bool found = false;
+    for (auto it = cartItems.begin(); it != cartItems.end(); ++it) {
+        if (it->GetName() == name) {
+            cartItems.erase(it);
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Item not found in cart. Nothing removed." << endl;
+    }
 }
 
-void ShoppingCart::ModifyItem(ItemToPurchase item){
-  if ( item){
-    "
-  }
-  else{
-    cout << "Item not found in cart. Nothing modified." << endl;
+void ShoppingCart::ModifyItem(ItemToPurchase item) {
+    bool found = false;
+    for (auto& cartItem : cartItems) {
+        if (cartItem.GetName() == item.GetName()) {
+            if (!item.GetDescription().empty()) {
+                cartItem.SetDescription(item.GetDescription());
+            }
+            if (item.GetPrice() != 0) {
+                cartItem.SetPrice(item.GetPrice());
+            }
+            if (item.GetQuantity() != 0) {
+                cartItem.SetQuantity(item.GetQuantity());
+            }
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Item not found in cart. Nothing modified." << endl;
+    }
 }
 
-int ShoppingCart::GetNumItemsInCart(){
-  //for (int i = 0; i < cartItems.size(); i++){
-  //  cout << cartItems.at(i);
-  //}
+int ShoppingCart::GetNumItemsInCart() {
+    int totalQuantity = 0;
+    for (const auto& item : cartItems) {
+        totalQuantity += item.GetQuantity();
+    }
+    return totalQuantity;
 }
 
-double ShoppingCart::GetCostOfCart(){
-  //get cost of cartItems
+double ShoppingCart::GetCostOfCart() {
+    double totalCost = 0.0;
+    for (const auto& item : cartItems) {
+        totalCost += item.GetPrice() * item.GetQuantity();
+    }
+    return totalCost;
 }
 
-void ShoppingCart::PrintTotal(){
-  cout << ShoppingCart.GetCustomersName() << "'s Shopping Cart - " << ShoppingCart.GetDate() << endl;
-  cout << "Number of items: " << ShoppingCart.GetNumItemsInCart() << endl;
-  cout << "Total: $" << ShoppingCar.GetCostOfCart() << endl;
+void ShoppingCart::PrintTotal() {
+    if (cartItems.empty()) {
+        cout << "SHOPPING CART IS EMPTY" << endl;
+    } else {
+        cout << "Total Cost of Cart: $" << GetCostOfCart() << endl;
+    }
 }
 
-void ShoppingCart::PrintDescriptions(){
-  cout << ShoppingCart.GetCustomersName() << "'s Shopping Cart - " << ShoppingCart.GetDate() << endl;
-  cout << "Item Description" << endl;
+void ShoppingCart::PrintDescriptions() {
+    if (cartItems.empty()) {
+        cout << "SHOPPING CART IS EMPTY" << endl;
+    } else {
+        cout << "Item Descriptions:" << endl;
+        for (const auto& item : cartItems) {
+            cout << item.GetDescription() << endl;
+        }
+    }
 }
-
-
-  
-
-  

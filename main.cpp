@@ -21,20 +21,66 @@ void PrintMenu() {
 void ExecuteMenu(char option, ShoppingCart& theCart) {
    switch (option){
       case 'a':
-         
-      theCart.AddItem();
+         cout<<"ADD ITEM TO CART"<<endl;
+         cout<<"Enter the item name: "<<endl;
+         string item;
+         getline(cin, item);
+         cout<<endl;
+         cout<<"Enter the item description: "<<endl;
+         string description;
+         getline(cin, description);
+         cout<<endl;
+         cout<<"Enter the item price: "<<endl;
+         int price;
+         cin>>price;
+         cout<<endl;
+         cout<<"Enter the item quantity: "<<endl;
+         int quantity;
+         cin>>quantity;
+         cout<<endl;
+         ItemToPurchase item1(name,description,price,quantity);
+         theCart.AddItem(item1);
       break;
       case 'd':
-      theCart.RemoveItem(NEED PARAMETER);
+         cout<<"REMOVE ITEM FROM CART"<<endl;
+         cout<<"Enter name of item to remove: "<<endl;
+         string item;
+         getline(cin, item);
+         theCart.RemoveItem(item);
       break;
       case 'c':
-      theCart.SetQuantity(NEED PARAMETER);
+         cout<<"CHANGE ITEM QUANTITY"<<endl;
+         cout<<"Enter the item name: "<<endl;
+         string item;
+         getline(cin, item);
+         cout<<"Enter the new quantity: "<<endl;
+         int quantity;
+         cin>>quantity;
+         ItemToPurchase item1(item," ",0,quantity);
+         ModifyItem(item1);
+         //FIX WHEN FUNCTION IS DONE
       break;
       case 'i':
-      theCart.PrintDescriptions();
+         cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
+         cout<<theCart.GetCustomerName()<<""s Shopping Cart - "<<theCart.GetDate()<<endl;
+         cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
+         cout<<endl;
+         theCart.PrintDescriptions();
+         cout<<<<endl;
+         cout<<endl;
+         theCart.PrintTotal()
+         cout<<endl;
       break;
       case'o':
-      theCart.PrintTotal();
+         cout<<"OUTPUT SHOPPING CART"<<endl;
+         cout<<theCart.GetCustomerName()<<""s Shopping Cart - "<<theCart.GetDate()<<endl;
+         cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
+         cout<<endl;
+         theCart.PrintDescriptions();
+         cout<<<<endl;
+         cout<<endl;
+         theCart.PrintTotal()
+         cout<<endl;
       break;
       case 'q':
       break;
@@ -44,11 +90,11 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
 int main() {
 string name, date;
    cout<<"Enter customer's name: ";
-   cin>>name;
+   getline(cin, name);
    cout<<endl;
    cout<<name<<endl;
    cout<<"Enter today's date: ";
-   cin>>date;
+   getline(cin, date);
    cout<<endl;
    cout<<date<<endl;
 

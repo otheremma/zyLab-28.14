@@ -35,10 +35,10 @@ int ItemToPurchase::GetQuantity() const {
 }
 
 void ItemToPurchase::PrintItemCost() {
-  //cout item cost
+  cout<<"Item cost: "<<itemPrice<<endl;
 }      
 
 void ItemToPurchase::PrintItemDescription(){
-  //cout item description
+  cout<<"Item Description: "<<itemDescription<<endl;
 }
 

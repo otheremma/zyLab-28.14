@@ -36,11 +36,14 @@ double ShoppingCart::GetCostOfCart(){
 }
 
 void ShoppingCart::PrintTotal(){
-  //print total
+  cout << ShoppingCart.GetCustomersName() << "'s Shopping Cart - " << ShoppingCart.GetDate() << endl;
+  cout << "Number of items: " << ShoppingCart.GetNumItemsInCart() << endl;
+  cout << "Total: $" << ShoppingCar.GetCostOfCart() << endl;
 }
 
 void ShoppingCart::PrintDescriptions(){
-  //preint descriptions
+  cout << ShoppingCart.GetCustomersName() << "'s Shopping Cart - " << ShoppingCart.GetDate() << endl;
+  cout << "Item Description" << endl;
 }
 
 

@@ -30,7 +30,7 @@ int ItemToPurchase::GetPrice() const {
   return itemPrice;
 }
 
-int ItemToPurchase:: GetQuantity() const {
+int ItemToPurchase::GetQuantity() const {
   return itemQuantity;
 }
 

@@ -14,7 +14,7 @@ string ShoppingCart::GetDate() const {
 }
 
 void ShoppingCart::AddItem(ItemToPurchase item){
-  //add item
+  cartItems.push_back(item);
 }
 
 void ShoppingCart::RemoveItem(string name){
@@ -22,7 +22,11 @@ void ShoppingCart::RemoveItem(string name){
 }
 
 void ShoppingCart::ModifyItem(ItemToPurchase item){
-  //modify item
+  if ( item){
+    "
+  }
+  else{
+    cout << "Item not found in cart. Nothing modified." << endl;
 }
 
 int ShoppingCart::GetNumItemsInCart(){

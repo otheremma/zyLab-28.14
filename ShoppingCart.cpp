@@ -1,50 +1,49 @@
-#include <iostream>
-#include "ItemToPurchase.h"
+#include <string>
+#include <vector>
 using namespace std;
+#incldue "ShoppingCart.h"
 
-ShoppingCart(string name, string date){
-  
-}
-string GetCustomerName(){
+ShoppingCart::ShoppingCart();
+
+string ShoppingCart::GetCustormerName() const {
   return customerName;
 }
 
- string GetDate(){
-   return currentDate;
- }     
-
-void AddItem(item){
-  for (int i = 0; i < cartItems.size(); i++){
-    cartItems.at(i) = item;
-  }
+string ShoppingCart::GetDate() const {
+  return currentDate;
 }
 
-void RemoveItem(name){
+void ShoppingCart::AddItem(ItemToPurchase item){
+  //add item
+}
+
+void ShoppingCart::RemoveItem(string name){
   //remove item
 }
 
-void ModifyItem(item){
+void ShoppingCart::ModifyItem(ItemToPurchase item){
   //modify item
 }
-      
-int GetNumItemsInCart(){
-  return cartItems.size();
+
+int ShoppingCart::GetNumItemsInCart(){
+  //for (int i = 0; i < cartItems.size(); i++){
+  //  cout << cartItems.at(i);
+  //}
 }
 
-double GetCostofCart(){
-  //return cost of cart
+double ShoppingCart::GetCostOfCart(){
+  //get cost of cartItems
 }
-      
-void PrintTotal(){
-  for (int i = 0; i < cartItems.size(); i++){
-    cout << cartItems.at(i);
-  }
-}      
 
-void PrintDescriptions(){
-  //cout descriptions
+void ShoppingCart::PrintTotal(){
+  //print total
 }
-      
-    
-};
 
+void ShoppingCart::PrintDescriptions(){
+  //preint descriptions
+}
+
+
+  
+
+  

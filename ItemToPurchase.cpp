@@ -2,43 +2,43 @@
 #include "ItemToPurchase.h"
 using namespace std;
 
-void SetName(name){
+void ItemToPurchase::SetName(string& name){
   itemName = name;
 }
 
-void SetDescription(description){
+void ItemToPurchase::SetDescription(string& description){
   itemDescription = description;
 }
 
-void SetPrice(price){
+void ItemToPurchase::SetPrice(int price){
   itemPrice = price;
 }
 
-void SetQuantiy(quantity){
+void ItemToPurchase::SetQuantiy(int quantity){
   itemQuantity = quantity;
 }
 
-string GetName(){
+string ItemToPurchase::GetName() const {
   return itemName;
 }
 
-string GetDescription(){
+string ItemToPurchase::GetDescription() const {
   return itemDescription;
 }
 
-int GetPrice(){
+int ItemToPurchase::GetPrice() const {
   return itemPrice;
 }
 
-int GetQuantity(){
+int ItemToPurchase::GetQuantity() const {
   return itemQuantity;
 }
 
-void PrintItemCost(){
+void ItemToPurchase::PrintItemCost() {
   //cout item cost
 }      
 
-void PrintItemDescription(){
+void ItemToPurchase::PrintItemDescription(){
   //cout item description
 }
 

@@ -1,6 +1,6 @@
 // Repository Link: https://github.com/otheremma/zyLab-28.14.git
 //Group Members: Emma Stammeyer
-//
+// Abigail Rojas
 
 #include <iostream>
 #include <iomanip>
@@ -20,7 +20,7 @@ void PrintMenu() {
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
    switch (option){
-      case 'a':
+      case 'a':{
          cout<<"ADD ITEM TO CART"<<endl;
          cout<<"Enter the item name: "<<endl;
          string item;
@@ -40,15 +40,15 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
          cout<<endl;
          ItemToPurchase item1(name,description,price,quantity);
          theCart.AddItem(item1);
-      break;
-      case 'd':
+      break;}
+      case 'd':{
          cout<<"REMOVE ITEM FROM CART"<<endl;
          cout<<"Enter name of item to remove: "<<endl;
          string item;
          getline(cin, item);
          theCart.RemoveItem(item);
-      break;
-      case 'c':
+      break;}
+      case 'c':{
          cout<<"CHANGE ITEM QUANTITY"<<endl;
          cout<<"Enter the item name: "<<endl;
          string item;
@@ -59,31 +59,31 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
          ItemToPurchase item1(item," ",0,quantity);
          ModifyItem(item1);
          //FIX WHEN FUNCTION IS DONE
-      break;
-      case 'i':
+      break;}
+      case 'i':{
          cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
-         cout<<theCart.GetCustomerName()<<""s Shopping Cart - "<<theCart.GetDate()<<endl;
+         cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
          cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
          cout<<endl;
          theCart.PrintDescriptions();
-         cout<<<<endl;
          cout<<endl;
-         theCart.PrintTotal()
          cout<<endl;
-      break;
-      case'o':
+         theCart.PrintTotal();
+         cout<<endl;
+      break;}
+      case'o':{
          cout<<"OUTPUT SHOPPING CART"<<endl;
-         cout<<theCart.GetCustomerName()<<""s Shopping Cart - "<<theCart.GetDate()<<endl;
+         cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
          cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
          cout<<endl;
          theCart.PrintDescriptions();
-         cout<<<<endl;
          cout<<endl;
-         theCart.PrintTotal()
          cout<<endl;
-      break;
-      case 'q':
-      break;
+         theCart.PrintTotal();
+         cout<<endl;
+      break;}
+      case 'q':{
+      break;}
   } 
 }
 

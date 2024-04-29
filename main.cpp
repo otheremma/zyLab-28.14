@@ -16,110 +16,123 @@ void PrintMenu() {
    cout<<"i - Output items' descriptions"<<endl;
    cout<<"o - Output shopping cart"<<endl;
    cout<<"q - Quit"<<endl;
+   
 }
 
 void ExecuteMenu(char option, ShoppingCart& theCart) {
    switch (option){
       case 'a':{
          cout<<"ADD ITEM TO CART"<<endl;
-         cout<<"Enter the item name: "<<endl;
+       cout<<"Enter the item name:"<<endl;
          string item;
          getline(cin, item);
-         cout<<endl;
-         cout<<"Enter the item description: "<<endl;
+         
+         cout<<"Enter the item description:"<<endl;
          string description;
          getline(cin, description);
-         cout<<endl;
-         cout<<"Enter the item price: "<<endl;
+        
+        cout<<"Enter the item price:"<<endl;
          int price;
          cin>>price;
-         cout<<endl;
-         cout<<"Enter the item quantity: "<<endl;
+         
+        cout<<"Enter the item quantity:"<<endl;
          int quantity;
          cin>>quantity;
-         cout<<endl;
-         ItemToPurchase item1(name,description,price,quantity);
+        cout<<endl;
+         ItemToPurchase item1(item,description,price,quantity);
          theCart.AddItem(item1);
-      break;}
+      break;
+      }
       case 'd':{
+         cout<<endl;
          cout<<"REMOVE ITEM FROM CART"<<endl;
-         cout<<"Enter name of item to remove: "<<endl;
+         cout<<"Enter name of item to remove:"<<endl;
          string item;
          getline(cin, item);
          theCart.RemoveItem(item);
-      break;}
+         cout<<endl;
+      break;
+      }
       case 'c':{
          cout<<"CHANGE ITEM QUANTITY"<<endl;
-         cout<<"Enter the item name: "<<endl;
+         cout<<"Enter the item name:"<<endl;
          string item;
          getline(cin, item);
-         cout<<"Enter the new quantity: "<<endl;
+         cout<<"Enter the new quantity:"<<endl;
          int quantity;
          cin>>quantity;
          ItemToPurchase item1(item," ",0,quantity);
          theCart.ModifyItem(item1);
-      break;}
+         cout<<endl;
+         
+      break;
+      }
       case 'i':{
          cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
          cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
-         cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
+         //cout<<"Number of Items: "<<theCart.GetNumItemsInCart();
          cout<<endl;
          theCart.PrintDescriptions();
          cout<<endl;
-         cout<<endl;
-         theCart.PrintTotal();
-         cout<<endl;
-      break;}
+      break;
+      }
       case'o':{
          cout<<"OUTPUT SHOPPING CART"<<endl;
          cout<<theCart.GetCustomerName()<<"'s Shopping Cart - "<<theCart.GetDate()<<endl;
          cout<<"Number of Items: "<<theCart.GetNumItemsInCart()<<endl;
-         cout<<endl;
-         theCart.PrintDescriptions();
-         cout<<endl;
-         cout<<endl;
+         //cout<<endl;
+         if(theCart.GetNumItemsInCart()==0){
+          theCart.PrintTotal();
+          cout<<endl;
+         }
+         else{
+        // theCart.PrintDescriptions();
+        // cout<<endl;
          theCart.PrintTotal();
          cout<<endl;
-      break;}
+         }
+      break;
+      }
       case 'q':{
-      break;}
+      break;
+      }
   } 
 }
 
 int main() {
 string name, date;
-   cout<<"Enter customer's name: ";
+   cout<<"Enter customer's name:"<<endl;
    getline(cin, name);
-   cout<<endl;
-   cout<<name<<endl;
-   cout<<"Enter today's date: ";
+   cout<<"Enter today's date:"<<endl;
    getline(cin, date);
    cout<<endl;
-   cout<<date<<endl;
-
    cout<<"Customer name: "<<name<<endl;
    cout<<"Today's date: "<<date<<endl;
+   cout<<endl;
     ShoppingCart cart(name,date);
 
-   printMenu();
+   //PrintMenu();
+  // cout<<endl;
+  // cout<<"Choose an option:"<<endl;
+   
    char option;
-   cout<<"Choose an option: ";
-   cin>>option;
-   while(option!='q'&&option!='o'&&option!='i'&&option!='c'&&option!='d'&&option!='a'){
-      cout<<"Choose an option: ";
-      cin>>option;
-   }
-   while(option!='q'){
-      ExecuteMenu(option, cart);
-      cout<<"Choose an option: ";
-      cin>>option;
-   }
-      ExecuteMenu(option, cart);
-   
-   
+   do {
+      PrintMenu();
+        cout << endl;
+        cout << "Choose an option:" << endl;
+        cin >> option;
+        cin.ignore(); 
+       
 
-   
-   
-   
-   return 0;
+        while (option != 'q' && option != 'o' && option != 'i' && option != 'c' && option != 'd' && option != 'a') {
+            cout << "Choose an option:" << endl;
+            cin >> option;
+            cin.ignore();
+        }
+
+        ExecuteMenu(option, cart);
+
+    } while (option != 'q');
+
+    return 0;
 }

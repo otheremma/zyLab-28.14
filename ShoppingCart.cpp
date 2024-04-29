@@ -1,7 +1,7 @@
 #include <iostream>
 #include "ShoppingCart.h"
 
-ShoppingCart::ShoppingCart() : customerName(""), currentDate("") {}
+ShoppingCart::ShoppingCart() {}
 
 ShoppingCart::ShoppingCart(string name, string date) : customerName(name), currentDate(date) {}
 
@@ -69,11 +69,21 @@ double ShoppingCart::GetCostOfCart() {
     return totalCost;
 }
 
+
 void ShoppingCart::PrintTotal() {
     if (cartItems.empty()) {
+       cout<<endl;
         cout << "SHOPPING CART IS EMPTY" << endl;
+        cout<<endl;
+        cout<<"Total: $"<<GetCostOfCart()<<endl;
     } else {
-        cout << "Total Cost of Cart: $" << GetCostOfCart() << endl;
+   cout << endl;
+        //cout << "Total:" << endl;
+        for (const auto& item : cartItems) {
+            cout << item.GetName() << " " << item.GetQuantity() << " @ $" << item.GetPrice() << " = $" << item.GetPrice() * item.GetQuantity() << endl;
+        }
+        cout << endl;
+        cout << "Total: $" << GetCostOfCart() << endl;
     }
 }
 
@@ -81,9 +91,9 @@ void ShoppingCart::PrintDescriptions() {
     if (cartItems.empty()) {
         cout << "SHOPPING CART IS EMPTY" << endl;
     } else {
-        cout << "Item Descriptions:" << endl;
+        cout << "Item Descriptions" << endl;
         for (const auto& item : cartItems) {
-            cout << item.GetDescription() << endl;
+            cout << item.GetName() << ": " << item.GetDescription() << endl;
         }
     }
 }

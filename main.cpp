@@ -57,8 +57,7 @@ void ExecuteMenu(char option, ShoppingCart& theCart) {
          int quantity;
          cin>>quantity;
          ItemToPurchase item1(item," ",0,quantity);
-         ModifyItem(item1);
-         //FIX WHEN FUNCTION IS DONE
+         theCart.ModifyItem(item1);
       break;}
       case 'i':{
          cout<<"OUTPUT ITEMS' DESCRIPTIONS"<<endl;
@@ -100,22 +99,22 @@ string name, date;
 
    cout<<"Customer name: "<<name<<endl;
    cout<<"Today's date: "<<date<<endl;
-   new ShoppingCart cart(name,date);
+    ShoppingCart cart(name,date);
 
    printMenu();
    char option;
    cout<<"Choose an option: ";
    cin>>option;
-   while(option=!'q'||option=!'o'||option=!'i'||option=!'c'||option=!'d'||option=!'a'){
+   while(option!='q'&&option!='o'&&option!='i'&&option!='c'&&option!='d'&&option!='a'){
       cout<<"Choose an option: ";
       cin>>option;
    }
-   (while option=='o'||option=='i'||option=='c'||option=='d'||option=='a'){
+   while(option!='q'){
       ExecuteMenu(option, cart);
+      cout<<"Choose an option: ";
+      cin>>option;
    }
-   if(option=='q'){
       ExecuteMenu(option, cart);
-   }
    
    
 
